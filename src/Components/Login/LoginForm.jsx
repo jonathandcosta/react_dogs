@@ -8,7 +8,6 @@ import useForm from '../../Hooks/useForm';
 const LoginForm = () => {
   const username = useForm('email');
   const password = useForm();
-  console.log(password.value);
 
   // consumo da API
   function handleSubmit(event) {
