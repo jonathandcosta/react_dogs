@@ -1,5 +1,6 @@
 import React from 'react';
 import { TOKEN_POST, TOKEN_VALIDATE_POST, USER_GET } from './api';
+import { useNavigate } from 'react-router-dom';
 
 export const UserContext = React.createContext();
 
@@ -8,6 +9,7 @@ export const UserStorage = ({ children }) => {
   const [login, setLogin] = React.useState(null); //verifica o login
   const [loading, setLoading] = React.useState(false); //verifica o carregamento
   const [error, setError] = React.useState(null); //verifica o erro
+  const navigate = useNavigate();
 
   // loga usuário automaticamente
   React.useEffect(() => {
@@ -51,6 +53,7 @@ export const UserStorage = ({ children }) => {
       const { token } = await tokenRes.json();
       window.localStorage.setItem('token', token);
       await getUser(token);
+      navigate('/conta');
     } catch (err) {
       setError(err.message);
       setLogin(false);
@@ -65,6 +68,7 @@ export const UserStorage = ({ children }) => {
     setLoading(false);
     setLogin(false);
     window.localStorage.removeItem('token');
+    navigate('/login');
   }
 
   return (
