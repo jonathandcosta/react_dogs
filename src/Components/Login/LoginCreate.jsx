@@ -1,8 +1,15 @@
 import React from 'react';
 import Input from '../Forms/Input';
 import Button from '../Forms/Button';
+import useForm from '../../Hooks/useForm';
 
 const LoginCreate = () => {
+  // validar as informações do usuário no input.
+  //obs: para forçar o preenchimento do input na page usa-se a const dessa forma-> const username = useForm('nome') com o parametro que será exigido preenchido na const.
+  const username = useForm();
+  const email = useForm('email');
+  const password = useForm();
+
   function handleSubmit(event) {
     event.preventDefault();
   }
