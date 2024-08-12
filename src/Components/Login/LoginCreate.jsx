@@ -3,6 +3,7 @@ import Input from '../Forms/Input';
 import Button from '../Forms/Button';
 import useForm from '../../Hooks/useForm';
 import { USER_POST } from '../../api';
+import { UserContext } from '../../UserContext';
 
 const LoginCreate = () => {
   // validar as informações do usuário no input.
@@ -10,6 +11,8 @@ const LoginCreate = () => {
   const username = useForm();
   const email = useForm('email');
   const password = useForm(); //existe um regex pronto no arquivo "useform"
+
+  const { userLogin } = React.useContext(UserContext);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -19,7 +22,7 @@ const LoginCreate = () => {
       password: password.value,
     });
     const response = await fetch(url, options);
-    console.log(response);
+    if (response.ok) userLogin(username.value, password.value);
   }
 
   return (
