@@ -2,6 +2,8 @@ import React from 'react';
 import UserHeader from './UserHeader';
 import { Routes, Route } from 'react-router-dom';
 import Feed from '../Feed/Feed';
+import UserPhotoPost from './UserPhotoPost';
+import UserStats from './UserStats';
 
 const User = () => {
   return (
@@ -9,6 +11,8 @@ const User = () => {
       <UserHeader />
       <Routes>
         <Route path="/" element={<Feed />} />
+        <Route path="postar" element={<UserPhotoPost />} />
+        <Route path="estatistica" element={<UserStats />} />
       </Routes>
     </section>
   );
