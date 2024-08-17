@@ -5,27 +5,29 @@ import MinhasFotos from '../../Assets/feed.svg?react';
 import Estatisticas from '../../Assets/estatisticas.svg?react';
 import AdicionarFoto from '../../Assets/adicionar.svg?react';
 import Sair from '../../Assets/sair.svg?react';
+import styles from './UserHeaderNav.module.css';
 
 const UserHeaderNav = () => {
+  const { mobile, setMobile } = React.useState(null);
   const { userLogout } = React.useContext(UserContext);
 
   return (
-    <nav>
-      <NavLink to="/conta">
+    <nav className={styles.nav}>
+      <NavLink to="/conta" end>
         <MinhasFotos />
-        Minhas Fotos
+        {mobile && 'Minhas Fotos'}
       </NavLink>
-      <NavLink to="/conta/estatisticas">
+      <NavLink to="/conta/estatistica">
         <Estatisticas />
-        Estatíticas
+        {mobile && 'Minhas Fotos'}
       </NavLink>
       <NavLink to="/conta/postar">
         <AdicionarFoto />
-        Adicionar
+        {mobile && 'Adicionar'}
       </NavLink>
       <button onClick={userLogout}>
         <Sair />
-        Sair
+        {mobile && 'Sair'}
       </button>
     </nav>
   );
