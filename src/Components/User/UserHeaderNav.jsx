@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../UserContext';
 import MinhasFotos from '../../Assets/feed.svg?react';
 import Estatisticas from '../../Assets/estatisticas.svg?react';
@@ -12,6 +12,11 @@ const UserHeaderNav = () => {
   const { userLogout } = React.useContext(UserContext);
   const mobile = useMedia('(max-width: 40rem)');
   const [mobileMenu, setMobileMenu] = React.useState(false);
+
+  const { pathname } = useLocation();
+  React.useEffect(() => {
+    setMobileMenu(false);
+  }, [pathname]);
 
   const navigate = useNavigate();
 
