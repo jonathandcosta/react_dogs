@@ -1,7 +1,13 @@
 import React from 'react';
+import styles from '../Feed/FeedPhotosItem.module.css';
 
-const FeedPhotosItem = () => {
-  return <div></div>;
+const FeedPhotosItem = ({ photo }) => {
+  return (
+    <li className={styles.photo}>
+      <img src={photo.src} alt={photo.title} />
+      <span className={styles.show}>{photo.acessos}</span>
+    </li>
+  );
 };
 
 export default FeedPhotosItem;
