@@ -89,3 +89,13 @@ input {
     opacity: 1;
   }
 }
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(90vh + 10rem);
+}
+
+.AppBody {
+  flex: 1;
+}
